@@ -16,7 +16,13 @@ Use a better box model (opinionated).
 *::after {
   box-sizing: border-box;
 }
+.border-green-500 {
+  border-color: #22c55e;
+}
 
+.border-2 {
+  border-width: 2px;
+}
 /**
 Use a more readable tab size (opinionated).
 */
@@ -25,7 +31,13 @@ Use a more readable tab size (opinionated).
   -moz-tab-size: 4;
   tab-size: 4;
 }
+.p-6 {
+  padding: 1.5rem;
+}
 
+.m-4 {
+  margin: 1rem;
+}
 /**
 1. Correct the line height in all browsers.
 2. Prevent adjustments of font size after orientation changes in iOS.
@@ -1079,6 +1091,9 @@ select {
     max-width: 1280px;
   }
 }
+.bg-green-500 {
+  background-color: #22c55e;
+}
 
 .bg-black {
   --tw-bg-opacity: 1;
@@ -1239,10 +1254,19 @@ select {
   --tw-bg-opacity: 1;
   background-color: rgba(30, 41, 59, var(--tw-bg-opacity));
 }
+.bg-gradient-to-br {
+  background-image: linear-gradient(to bottom right, #9333EA, #3B82F6);
+}
 
+.blur-sm {
+  filter: blur(4px);
+}
 .active\:bg-indigo-600:active {
   --tw-bg-opacity: 1;
   background-color: rgba(79, 70, 229, var(--tw-bg-opacity));
+}
+.group-active:opacity-0 {
+  opacity: 0;
 }
 
 .active\:bg-lightBlue-600:active {
@@ -1555,7 +1579,9 @@ select {
 .h-600-px {
   height: 600px;
 }
-
+.text-center {
+  text-align: center;
+}
 .text-55 {
   font-size: 55rem;
 }
@@ -1841,7 +1867,9 @@ select {
 .hover\:-mt-4:hover {
   margin-top: -1rem;
 }
-
+.hover\:glow:hover {
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.8), 0 0 20px rgba(255, 255, 255, 0.6);
+}
 .max-h-860-px {
   max-height: 860px;
 }
@@ -2348,7 +2376,10 @@ select {
   --tw-text-opacity: 1;
   color: rgba(255, 255, 255, var(--tw-text-opacity));
 }
-
+.text-gray-200 {
+  --tw-text-opacity: 1;
+  color: rgb(229 231 235 / var(--tw-text-opacity)); /* Equivalent à #E5E7EB */
+}
 .text-pink-400 {
   --tw-text-opacity: 1;
   color: rgba(244, 114, 182, var(--tw-text-opacity));
@@ -2565,7 +2596,26 @@ select {
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   transition-duration: 150ms;
 }
+.animate-spin {
+  animation: spin 1s linear infinite;
+}
+.animated-button {
+  @apply rounded-md px-3.5 py-2 m-1 overflow-hidden relative group cursor-pointer border-2 font-medium border-indigo-600 text-indigo-600;
+}
 
+.animated-button::before {
+  content: "";
+  @apply absolute w-64 h-0 transition-all duration-300 origin-center rotate-45 -translate-x-20 bg-indigo-600 top-1/2 group-hover:h-64 group-hover:-translate-y-32 ease;
+}
+
+.animated-button span {
+  @apply relative text-indigo-600 transition duration-300 group-hover:text-white;
+}
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
 .ease-linear {
   transition-timing-function: linear;
 }
@@ -2988,7 +3038,13 @@ select {
     --tw-text-opacity: 1;
     color: rgba(226, 232, 240, var(--tw-text-opacity));
   }
+  .hover\:bg-green-600:hover {
+    background-color: #16a34a;
+  }
 
+  .hover\:text-white:hover {
+    color: #ffffff;
+  }
   .lg\:w-auto {
     width: auto;
   }

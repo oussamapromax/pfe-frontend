@@ -1,98 +1,104 @@
-/*eslint-disable*/
-import React from "react";
+/* eslint-disable */
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
-// components
-
+import { ShoppingCart, Menu } from "lucide-react";
 import IndexDropdown from "components/Dropdowns/IndexDropdown.js";
 
-export default function Navbar(props) {
-  const [navbarOpen, setNavbarOpen] = React.useState(false);
+export default function Navbar() {
+  const [navbarOpen, setNavbarOpen] = useState(false);
+
   return (
-    <>
-      <nav className="top-0 fixed z-50 w-full flex flex-wrap items-center justify-between px-2 py-3 navbar-expand-lg bg-white shadow">
-        <div className="container px-4 mx-auto flex flex-wrap items-center justify-between">
-          <div className="w-full relative flex justify-between lg:w-auto lg:static lg:block lg:justify-start">
-            <Link
-              to="/"
-              className="text-blueGray-700 text-sm font-bold leading-relaxed inline-block mr-4 py-2 whitespace-nowrap uppercase"
-            >
-              FootReserve
-            </Link>
-            <button
-              className="cursor-pointer text-xl leading-none px-3 py-1 border border-solid border-transparent rounded bg-transparent block lg:hidden outline-none focus:outline-none"
-              type="button"
-              onClick={() => setNavbarOpen(!navbarOpen)}
-            >
-              <i className="fas fa-bars"></i>
-            </button>
-          </div>
-          <div
-            className={
-              "lg:flex flex-grow items-center bg-white lg:bg-opacity-0 lg:shadow-none" +
-              (navbarOpen ? " block" : " hidden")
-            }
-            id="example-navbar-warning"
+    <nav className="top-0 fixed z-50 w-full flex flex-wrap items-center justify-between px-2 py-3 bg-lightBlue-600 shadow-md">
+
+      <div className="container mx-auto flex flex-wrap items-center justify-between">
+        {/* Logo FootReserve */}
+        <div className="w-full relative flex justify-between lg:w-auto lg:static lg:block lg:justify-start">
+          <Link to="/" className="text-white text-2xl font-bold">
+            FootReserve
+          </Link>
+          <button
+            className="cursor-pointer text-white text-xl leading-none px-3 py-1 border border-solid border-transparent rounded bg-transparent lg:hidden outline-none focus:outline-none"
+            type="button"
+            onClick={() => setNavbarOpen(!navbarOpen)}
           >
-            {/*<ul className="flex flex-col lg:flex-row list-none mr-auto">
-              <li className="flex items-center">
-                <a
-                  className="hover:text-blueGray-500 text-blueGray-700 px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold"
-                  href="https://www.creative-tim.com/learning-lab/tailwind/react/overview/notus?ref=nr-index-navbar"
-                >
-                  <i className="text-blueGray-400 far fa-file-alt text-lg leading-lg mr-2" />{" "}
-                  Docs
-                </a>
-              </li>
-            </ul>*/}
-            <ul className="flex flex-col lg:flex-row list-none lg:ml-auto">
-              <li className="flex items-center">
-                <IndexDropdown />
-              </li>
-              {/*<li className="flex items-center">
-                <a
-                  className="hover:text-blueGray-500 text-blueGray-700 px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold"
-                  href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdemos.creative-tim.com%2Fnotus-react%2F%23%2F"
-                  target="_blank"
-                >
-                  <i className="text-blueGray-400 fab fa-facebook text-lg leading-lg " />
-                  <span className="lg:hidden inline-block ml-2">Share</span>
-                </a>
-              </li>
-
-              <li className="flex items-center">
-                <a
-                  className="hover:text-blueGray-500 text-blueGray-700 px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold"
-                  href="https://twitter.com/intent/tweet?url=https%3A%2F%2Fdemos.creative-tim.com%2Fnotus-react%2F%23%2F&text=Start%20your%20development%20with%20a%20Free%20Tailwind%20CSS%20and%20React%20UI%20Kit%20and%20Admin.%20Let%20Notus%20React%20amaze%20you%20with%20its%20cool%20features%20and%20build%20tools%20and%20get%20your%20project%20to%20a%20whole%20new%20level.%20"
-                  target="_blank"
-                >
-                  <i className="text-blueGray-400 fab fa-twitter text-lg leading-lg " />
-                  <span className="lg:hidden inline-block ml-2">Tweet</span>
-                </a>
-              </li>
-
-              <li className="flex items-center">
-                <a
-                  className="hover:text-blueGray-500 text-blueGray-700 px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold"
-                  href="https://github.com/creativetimofficial/notus-react?ref=nr-index-navbar"
-                  target="_blank"
-                >
-                  <i className="text-blueGray-400 fab fa-github text-lg leading-lg " />
-                  <span className="lg:hidden inline-block ml-2">Star</span>
-                </a>
-              </li>
-
-              <li className="flex items-center">
-                <button
-                  className="bg-lightBlue-500 text-white active:bg-lightBlue-600 text-xs font-bold uppercase px-4 py-2 rounded shadow hover:shadow-lg outline-none focus:outline-none lg:mr-1 lg:mb-0 ml-3 mb-3 ease-linear transition-all duration-150"
-                  type="button"
-                >
-                  <i className="fas fa-arrow-alt-circle-down"></i> Download
-                </button>
-              </li>*/}
-            </ul>
-          </div>
+            <Menu className="w-6 h-6" />
+          </button>
         </div>
-      </nav>
-    </>
+
+        {/* Menu Navbar */}
+        <div
+          className={
+            "lg:flex flex-grow items-center lg:bg-opacity-0 lg:shadow-none" +
+            (navbarOpen ? " block" : " hidden")
+          }
+          id="navbar-menu"
+        >
+          <ul className="flex flex-col lg:flex-row list-none lg:ml-auto items-center space-x-4">
+          <li>
+  <Link 
+    to="/" 
+    className="relative text-white px-3 py-2 transition duration-300 ease-in-out hover:text-gray-200 hover:shadow-lg hover:shadow-white/20 hover:bg-white/10 rounded-md hover:glow"
+  >
+    Home
+  </Link>
+</li>
+<li>
+  <Link 
+    to="/features" 
+    className="relative text-white px-3 py-2 transition duration-300 ease-in-out hover:text-gray-200 hover:shadow-lg hover:shadow-white/20 hover:bg-white/10 rounded-md hover:glow"
+  >
+    Features
+  </Link>
+</li>
+<li>
+  <Link 
+    to="/pricing" 
+    className="relative text-white px-3 py-2 transition duration-300 ease-in-out hover:text-gray-200 hover:shadow-lg hover:shadow-white/20 hover:bg-white/10 rounded-md hover:glow"
+  >
+    Pricing
+  </Link>
+</li>
+<li>
+  <Link 
+    to="/about" 
+    className="relative text-white px-3 py-2 transition duration-300 ease-in-out hover:text-gray-200 hover:shadow-lg hover:shadow-white/20 hover:bg-white/10 rounded-md hover:glow"
+  >
+    About
+  </Link>
+</li>
+
+            {/* Barre de recherche */}
+            <li className="flex items-center">
+              <input
+                type="text"
+                placeholder="Search"
+                className="px-3 py-2 rounded-l-md border-none focus:ring-2 focus:ring-blue-400"
+              />
+         <button className="relative px-4 py-2 overflow-hidden rounded-r-md bg-lightBlue-500 text-white font-semibold transition-all duration-300 ease-out hover:bg-gradient-to-r hover:from-lightBlue-500 hover:to-lightBlue-400 hover:ring-2 hover:ring-offset-2 hover:ring-lightBlue-400">
+  <span className="absolute right-0 w-8 h-32 -mt-12 transition-all duration-1000 transform translate-x-12 bg-white opacity-10 rotate-12 group-hover:-translate-x-40 ease"></span>
+  <span className="relative">Search</span>
+</button>
+
+
+            </li>
+
+            {/* Icône panier */}
+            <li className="ml-3">
+              <button className="relative">
+                <ShoppingCart className="text-white w-6 h-6" />
+                <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs font-bold px-2 py-1 rounded-full">
+                  2
+                </span>
+              </button>
+            </li>
+
+            {/* Dropdown utilisateur (NON MODIFIÉ) */}
+            <li className="ml-3 ">
+              <IndexDropdown  />
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
   );
 }

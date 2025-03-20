@@ -1,72 +1,79 @@
 /*eslint-disable*/
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
 import IndexNavbar from "components/Navbars/IndexNavbar.js";
 import Footer from "components/Footers/Footer.js";
 import SearchBar from "../components/SearchBar.js";
+import ImageCarousel from "components/ImageCarousel";
+// Importation des images
+import img1 from "assets/img/football-field.jpg";
+import img2 from "assets/img/pools-page.jpg";
+import img3 from "assets/img/basketball-court.jpg";
+import img4 from "assets/img/tennis-field.jpg";
 
-export default function Welcome() {
+const images = [img1, img2, img3, img4];
+
+const Welcome = () => {
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
+  // Effet pour changer l'image toutes les 3 secondes
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentImageIndex((prevIndex) => (prevIndex + 1) % images.length);
+    }, 3000); // 3 secondes
+
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <>
       <IndexNavbar />
       <main>
-        <div className="relative pt-16 pb-32 flex content-center items-center justify-center min-h-screen">
-          {/* Background Image with Overlay */}
-          <div
-  className="absolute top-0 w-full h-full bg-center bg-cover"
-  style={{
-    backgroundImage: `url(${require("assets/img/football-field.jpg").default})`,
-  }}
->
-  <span
-    id="blackOverlay"
-    className="w-full h-full absolute opacity-75 bg-black"
-  ></span>
-</div>
+      
 
-          {/* Content */}
+        <div className="relative pt-16 pb-32 flex content-center items-center justify-center min-h-screen">
+          {/* Image Dynamique */}
+          <div
+  className="absolute top-0 w-full h-full bg-center bg-cover transition-all duration-1000 z-[-1]"
+  style={{ backgroundImage: `url(${images[currentImageIndex]})` }}
+>
+
+            <span className="w-full h-full absolute opacity-75 bg-black"></span>
+          </div>
+
+          {/* Contenu */}
           <div className="container relative mx-auto text-center">
             <div className="items-center flex flex-wrap">
               <div className="w-full lg:w-6/12 px-4 ml-auto mr-auto">
                 <div className="pr-12">
-                  <h1 className="text-white font-semibold text-3xl mt-20 ">
+                  <h1 className="text-white font-semibold text-3xl mt-20">
                     Bienvenue sur FootReserve !
                   </h1>
-                  <p className="mt-4 text-2xl text-blueGray-200 mt-2 ">
-                    FootReserve est la plateforme idéale pour réserver facilement des terrains de football. Profitez d'une expérience moderne et intuitive.
+                  <p className="mt-4 text-2xl text-blueGray-200">
+                    FootReserve est la plateforme idéale pour réserver facilement
+                    des terrains de football. Profitez d'une expérience moderne
+                    et intuitive.
                   </p>
+                  
+                  {/* Bouton Commencer */}
                   <div className="mt-12 flex justify-center">
                     <a
                       href="#"
-                      className="text-white font-bold px-6 py-4 rounded-lg bg-lightBlue-500 hover:bg-lightBlue-600 transition-all duration-150"
+                      className="text-white font-bold px-4 py-4 rounded-lg bg-lightBlue-500 hover:bg-lightBlue-600 transition-all duration-150"
                     >
                       Commencer
                     </a>
                   </div>
+
+                  {/* 🔥 Ajout du carousel sous le bouton */}
+                  <ImageCarousel />
                 </div>
               </div>
             </div>
           </div>
-
-          {/* Decorative Footer */}
-          <div
-            className="top-auto bottom-0 left-0 right-0 w-full absolute pointer-events-none overflow-hidden h-70-px"
-            style={{ transform: "translateZ(0)" }}
-          >
-            <svg
-              className="absolute bottom-0 overflow-hidden"
-              xmlns="http://www.w3.org/2000/svg"
-              preserveAspectRatio="none"
-              version="1.1"
-              viewBox="0 0 2560 100"
-              x="0"
-              y="0"
-            >
-             
-            </svg>
-          </div>
         </div>
+      
       </main>
 
       <section className="mt-48 md:mt-40 pb-40 relative bg-blueGray-100">
@@ -605,3 +612,4 @@ export default function Welcome() {
     </>
   );
 }
+export default Welcome
