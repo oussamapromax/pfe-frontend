@@ -1,89 +1,94 @@
-/*eslint-disable*/
-import React from "react";
+/* eslint-disable */
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import { ShoppingCart, Menu } from "lucide-react";
+import IndexDropdown from "components/Dropdowns/IndexDropdown.js";
 
-// components
+export default function Navbar() {
+  const [navbarOpen, setNavbarOpen] = useState(false);
 
-import PagesDropdown from "components/Dropdowns/PagesDropdown.js";
-
-export default function Navbar(props) {
-  const [navbarOpen, setNavbarOpen] = React.useState(false);
   return (
-    <>
-      <nav className="top-0 absolute z-50 w-full flex flex-wrap items-center justify-between px-2 py-3 navbar-expand-lg">
-        <div className="container px-4 mx-auto flex flex-wrap items-center justify-between">
-          <div className="w-full relative flex justify-between lg:w-auto lg:static lg:block lg:justify-start">
-            <Link
-              className="text-white text-sm font-bold leading-relaxed inline-block mr-4 py-2 whitespace-nowrap uppercase"
-              to="/"
-            >
-              FootReserve
-            </Link>
-            <button
-              className="cursor-pointer text-xl leading-none px-3 py-1 border border-solid border-transparent rounded bg-transparent block lg:hidden outline-none focus:outline-none"
-              type="button"
-              onClick={() => setNavbarOpen(!navbarOpen)}
-            >
-              <i className="text-white fas fa-bars"></i>
-            </button>
-          </div>
-          <div
-            className={
-              "lg:flex flex-grow items-center bg-white lg:bg-opacity-0 lg:shadow-none" +
-              (navbarOpen ? " block rounded shadow-lg" : " hidden")
-            }
-            id="example-navbar-warning"
+    <nav className="top-0 fixed z-50 w-full flex flex-wrap items-center justify-between px-2 py-3 bg-lightBlue-600 shadow-md">
+
+      <div className="container mx-auto flex flex-wrap items-center justify-between">
+        {/* Logo FootReserve */}
+        <div className="w-full relative flex justify-between lg:w-auto lg:static lg:block lg:justify-start">
+          <Link to="/" className="text-white text-2xl font-bold">
+            FootReserve
+          </Link>
+          <button
+            className="cursor-pointer text-white text-xl leading-none px-3 py-1 border border-solid border-transparent rounded bg-transparent lg:hidden outline-none focus:outline-none"
+            type="button"
+            onClick={() => setNavbarOpen(!navbarOpen)}
           >
-            
-            <ul className="flex flex-col lg:flex-row list-none lg:ml-auto">
-              <li className="flex items-center">
-                <PagesDropdown />
-              </li>
-              {/*<li className="flex items-center">
-                <a
-                  className="lg:text-white lg:hover:text-blueGray-200 text-blueGray-700 px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold"
-                  href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdemos.creative-tim.com%2Fnotus-react%2F%23%2F"
-                  target="_blank"
-                >
-                  <i className="lg:text-blueGray-200 text-blueGray-400 fab fa-facebook text-lg leading-lg " />
-                  <span className="lg:hidden inline-block ml-2">Share</span>
-                </a>
-              </li>
-
-              <li className="flex items-center">
-                <a
-                  className="lg:text-white lg:hover:text-blueGray-200 text-blueGray-700 px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold"
-                  href="https://twitter.com/intent/tweet?url=https%3A%2F%2Fdemos.creative-tim.com%2Fnotus-react%2F%23%2F&text=Start%20your%20development%20with%20a%20Free%20Tailwind%20CSS%20and%20React%20UI%20Kit%20and%20Admin.%20Let%20Notus%20React%20amaze%20you%20with%20its%20cool%20features%20and%20build%20tools%20and%20get%20your%20project%20to%20a%20whole%20new%20level.%20"
-                  target="_blank"
-                >
-                  <i className="lg:text-blueGray-200 text-blueGray-400 fab fa-twitter text-lg leading-lg " />
-                  <span className="lg:hidden inline-block ml-2">Tweet</span>
-                </a>
-              </li>
-
-              <li className="flex items-center">
-                <a
-                  className="lg:text-white lg:hover:text-blueGray-200 text-blueGray-700 px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold"
-                  href="https://github.com/creativetimofficial/notus-react?ref=nr-auth-navbar"
-                  target="_blank"
-                >
-                  <i className="lg:text-blueGray-200 text-blueGray-400 fab fa-github text-lg leading-lg " />
-                  <span className="lg:hidden inline-block ml-2">Star</span>
-                </a>
-              </li>*/}
-
-              {/*<li className="flex items-center">
-                <button
-                  className="bg-white text-blueGray-700 active:bg-blueGray-50 text-xs font-bold uppercase px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none lg:mr-1 lg:mb-0 ml-3 mb-3 ease-linear transition-all duration-150"
-                  type="button"
-                >
-                  <i className="fas fa-arrow-alt-circle-down"></i> Download
-                </button>
-              </li>*/}
-            </ul>
-          </div>
+            <Menu className="w-6 h-6" />
+          </button>
         </div>
-      </nav>
-    </>
+
+        {/* Menu Navbar */}
+        <div
+          className={
+            "lg:flex flex-grow items-center lg:bg-opacity-0 lg:shadow-none" +
+            (navbarOpen ? " block" : " hidden")
+          }
+          id="navbar-menu"
+        >
+          <ul className="flex flex-col lg:flex-row list-none lg:ml-auto items-center space-x-4 text-lg">
+          <li>
+  <Link 
+    to="/" 
+    className="relative text-white px-3 py-2 transition duration-300 ease-in-out hover:text-gray-200 hover:shadow-lg hover:shadow-white/20 hover:bg-white/10 rounded-md hover:glow"
+  >
+    Home
+  </Link>
+</li>
+<li>
+  <Link 
+    to="/features" 
+    className="relative text-white px-3 py-2 transition duration-300 ease-in-out hover:text-gray-200 hover:shadow-lg hover:shadow-white/20 hover:bg-white/10 rounded-md hover:glow"
+  >
+    Features
+  </Link>
+</li>
+<li>
+  <Link 
+    to="/pricing" 
+    className="relative text-white px-3 py-2 transition duration-300 ease-in-out hover:text-gray-200 hover:shadow-lg hover:shadow-white/20 hover:bg-white/10 rounded-md hover:glow"
+  >
+    Pricing
+  </Link>
+</li>
+<li>
+  <Link 
+    to="/about" 
+    className="relative text-white px-3 py-2 transition duration-300 ease-in-out hover:text-gray-200 hover:shadow-lg hover:shadow-white/20 hover:bg-white/10 rounded-md hover:glow"
+  >
+    About
+  </Link>
+</li>
+
+   
+
+
+           
+
+            {/* Icône panier */}
+            <li className="ml-3">
+              <button className="relative">
+                <ShoppingCart className="text-white w-6 h-6" />
+                <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs font-bold px-2 py-1 rounded-full">
+                  1
+                </span>
+              </button>
+            </li>
+
+            {/* Dropdown utilisateur (NON MODIFIÉ) */}
+            <li className="ml-3 ">
+              <IndexDropdown  />
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
   );
 }
