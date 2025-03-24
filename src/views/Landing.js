@@ -3,53 +3,56 @@ import { Link } from "react-router-dom";
 
 // components
 
-import Navbar from "components/Navbars/AuthNavbar.js";
+import Navbar from "components/Navbars/AboutNavbar.js";
 import Footer from "components/Footers/Footer.js";
-
+import SearchBar from "../components/SearchBar.js";
 export default function Landing() {
   return (
     <>
-      <Navbar transparent />
-      <main>
-        <div className="relative pt-16 pb-32 flex content-center items-center justify-center min-h-screen-75">
-          <div
-            className="absolute top-0 w-full h-full bg-center bg-cover"
-            style={{
-              backgroundImage:
-                "url('https://recreanice.fr/sites/default/files/node_images/foot2_0.jpg')",
-            }}
-          >
-            <span
-              id="blackOverlay"
-              className="w-full h-full absolute opacity-75 bg-black"
-            ></span>
-          </div>
-          <div className="container relative mx-auto">
-            <div className="items-center flex flex-wrap">
-              <div className="w-full lg:w-6/12 px-4 ml-auto mr-auto text-center">
-                <div className="pr-12">
-                  <h1 className="text-white font-semibold text-5xl">
-                    Your story starts with us.
-                  </h1>
-                  <p className="mt-4 text-lg text-blueGray-200">
-                  Une page d'atterrissage simple et efficace pour faciliter la réservation de terrains.
-                  Conçue avec Tailwind CSS, elle offre une expérience utilisateur moderne et intuitive.
-                  </p>
+         <Navbar transparent />
+            <main>
+                <div className="relative pt-16 pb-32 flex content-center items-center justify-center min-h-screen-75">
+                    <div
+                        className="absolute top-0 w-full h-full bg-center bg-cover"
+                        style={{
+                            backgroundImage:
+                                "url('https://recreanice.fr/sites/default/files/node_images/foot2_0.jpg')",
+                        }}
+                    >
+                        <span
+                            id="blackOverlay"
+                            className="w-full h-full absolute opacity-75 bg-black"
+                        ></span>
+                    </div>
+                    <div className="container relative mx-auto">
+                        <div className="items-center flex flex-wrap">
+                            <div className="w-full lg:w-6/12 px-4 ml-auto mr-auto text-center">
+                                <div className="pr-12 mt-6">
+                                    <h1 className="text-white font-semibold text-5xl">
+                                       Reserver nos terrains!
+                                    </h1>
+                                  
+                                </div>
+                            </div>
+                        </div>
+
+                        {/* Ajout de la barre de recherche ici */}
+                        <div className="mt-8">
+                            <SearchBar />
+                        </div>
+                    </div>
+                    <div
+                        className="top-auto bottom-0 left-0 right-0 w-full absolute pointer-events-none overflow-hidden h-70-px"
+                        style={{ transform: "translateZ(0)" }}
+                    >
+                        {/* Vous pouvez laisser ce div vide ou ajouter d'autres éléments ici si nécessaire */}
+                    </div>
                 </div>
-              </div>
-            </div>
-          </div>
-          <div
-            className="top-auto bottom-0 left-0 right-0 w-full absolute pointer-events-none overflow-hidden h-70-px"
-            style={{ transform: "translateZ(0)" }}
-          >
-       
-          </div>
-        </div>
+        
 
         <section className="pb-20 bg-blueGray-200 -mt-24">
           <div className="container mx-auto px-4">
-            <div className="flex flex-wrap">
+            {/*<div className="flex flex-wrap">
               <div className="lg:pt-12 pt-6 w-full md:w-4/12 px-4 text-center">
                 <div className="relative flex flex-col min-w-0 break-words bg-white w-full mb-8 shadow-lg rounded-lg">
                   <div className="px-4 py-5 flex-auto">
@@ -91,7 +94,7 @@ export default function Landing() {
                   </div>
                 </div>
               </div>
-            </div>
+            </div>*/}
 
             <div className="flex flex-wrap items-center mt-32">
               <div className="w-full md:w-5/12 px-4 mr-auto ml-auto">

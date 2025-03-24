@@ -52,7 +52,7 @@ export default function Forget() {
                   {/* Submit Button */}
                   <div className="text-center mt-6">
                     <button
-                      className="bg-blueGray-800 text-white active:bg-blueGray-600 text-sm font-bold uppercase px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 w-full ease-linear transition-all duration-150"
+                      className="bg-yellow-500 text-white active:bg-blueGray-600 text-sm font-bold uppercase px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 w-full ease-linear transition-all duration-150"
                       type="button"
                     >
                       Reset Password
@@ -65,13 +65,13 @@ export default function Forget() {
               <div className="w-1/2">
                 <Link
                   to="/auth/login"
-                  className="text-blueGray-200"
+                  className="text-black text-lg"
                 >
                   <small>Login</small>
                 </Link>
               </div>
               <div className="w-1/2 text-right">
-                <Link to="/auth/register" className="text-blueGray-200">
+                <Link to="/auth/register" className="text-black text-lg">
                   <small>Create new account</small>
                 </Link>
               </div>

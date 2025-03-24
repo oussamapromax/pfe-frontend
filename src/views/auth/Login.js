@@ -40,7 +40,7 @@ export default function Login() {
               </div>
               <div className="flex-auto px-4 lg:px-10 py-10 pt-0">
                 <div className="text-blueGray-400 text-center mb-3 font-bold">
-                  <small>Or sign in with credentials</small>
+                 
                 </div>
                 <form>
                   <div className="relative w-full mb-3">
@@ -99,7 +99,7 @@ export default function Login() {
 
                   <div className="text-center mt-6">
                     <button
-                      className="bg-blueGray-800 text-white active:bg-blueGray-600 text-sm font-bold uppercase px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 w-full ease-linear transition-all duration-150"
+                      className="bg-yellow-500 text-white active:bg-blueGray-600 text-sm font-bold uppercase px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 w-full ease-linear transition-all duration-150"
                       type="button"
                     >
                       Sign In
@@ -112,13 +112,13 @@ export default function Login() {
               <div className="w-1/2">
                 <Link 
                   to="/auth/forget"
-                  className="text-blueGray-200"
+                  className="text-black text-lg"
                 >
                   <small>Forgot password?</small>
                 </Link>
               </div>
               <div className="w-1/2 text-right">
-                <Link to="/auth/register" className="text-blueGray-200">
+                <Link to="/auth/register" className="text-black text-lg">
                   <small>Create new account</small>
                 </Link>
               </div>
